@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <title>FastAPI + aiortc + EdgeTTS</title>
+</head>
+<body>
+  <h2>文字转语音（WebRTC 实时返回）</h2>
+  <button onclick="start()">连接服务器</button>
+  <br><br>
+  <input id="textInput" type="text" placeholder="输入文字">
+  <button onclick="sendText()">发送文字</button>
+  <br><br>
+  <audio id="audio" controls autoplay playsinline></audio>
+  <script src="/client.js"></script>
+</body>
+</html>
