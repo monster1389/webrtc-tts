@@ -1,4 +1,6 @@
-# WebRTC TTS 项目依赖
+# WebRTC LLM + TTS 系统依赖
+
+## 核心依赖
 fastapi>=0.104.0
 aiortc>=1.6.0
 edge-tts>=6.1.0
@@ -6,8 +8,15 @@ numpy>=1.24.0
 av>=10.0.0
 uvicorn[standard]>=0.24.0
 
-# 系统依赖
-# ffmpeg 需要单独安装，例如：
+## LLM 相关依赖
+openai>=1.0.0  # 用于 OpenAI 和 DashScope 提供商
+
+## 系统依赖
+# FFmpeg 需要单独安装，例如：
 # Windows: choco install ffmpeg
-# macOS: brew install ffmpeg
+# macOS: brew install ffmpeg  
 # Linux: apt-get install ffmpeg
+
+## 可选依赖（根据使用的 LLM 提供商）
+# dashscope>=1.14.0  # 如果需要直接使用阿里云 DashScope SDK（当前使用 OpenAI 兼容模式）
+# qianfan>=0.3.0    # 如果需要百度千帆大模型

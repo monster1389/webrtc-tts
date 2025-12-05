@@ -2,16 +2,101 @@
 <html lang="zh-CN">
 <head>
   <meta charset="utf-8">
-  <title>FastAPI + aiortc + EdgeTTS</title>
+  <title>FastAPI + aiortc + EdgeTTS + LLM</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    .container {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .input-section, .output-section {
+      border: 1px solid #ddd;
+      padding: 20px;
+      border-radius: 8px;
+    }
+    #textInput {
+      width: 70%;
+      padding: 10px;
+      font-size: 16px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 4px;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    #responseText {
+      min-height: 200px;
+      border: 1px solid #ddd;
+      padding: 15px;
+      border-radius: 4px;
+      background-color: #f9f9f9;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      font-family: monospace;
+      font-size: 14px;
+      overflow-y: auto;
+      max-height: 400px;
+    }
+    .status {
+      color: #666;
+      font-style: italic;
+    }
+    .streaming {
+      color: #28a745;
+    }
+    .error {
+      color: #dc3545;
+    }
+  </style>
 </head>
 <body>
-  <h2>文字转语音（WebRTC 实时返回）</h2>
-  <button onclick="start()">连接服务器</button>
-  <br><br>
-  <input id="textInput" type="text" placeholder="输入文字">
-  <button onclick="sendText()">发送文字</button>
-  <br><br>
-  <audio id="audio" controls autoplay playsinline></audio>
+  <div class="container">
+    <h1>WebRTC + LLM + TTS 实时对话系统</h1>
+    
+    <div class="input-section">
+      <h3>连接与输入</h3>
+      <button onclick="start()">连接服务器</button>
+      <div style="margin-top: 15px;">
+        <input id="textInput" type="text" placeholder="输入问题或对话内容...">
+        <button onclick="sendText()">发送</button>
+      </div>
+      <div id="connectionStatus" class="status" style="margin-top: 10px;">
+        未连接
+      </div>
+    </div>
+    
+    <div class="output-section">
+      <h3>LLM 响应（实时流式显示）</h3>
+      <div id="responseText">
+        等待连接和输入...
+      </div>
+      <div id="responseStatus" class="status" style="margin-top: 10px;">
+        就绪
+      </div>
+    </div>
+    
+    <div class="output-section">
+      <h3>音频输出</h3>
+      <audio id="audio" controls autoplay playsinline style="width: 100%;"></audio>
+      <div id="audioStatus" class="status" style="margin-top: 10px;">
+        等待音频流...
+      </div>
+    </div>
+  </div>
+  
   <script src="/client.js"></script>
 </body>
 </html>

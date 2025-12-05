@@ -1,0 +1,31 @@
+{
+  "llm_provider": "openai",
+  "providers": {
+    "openai": {
+      "api_key": "${OPENAI_API_KEY}",
+      "base_url": "https://api.openai.com/v1",
+      "model": "gpt-3.5-turbo",
+      "temperature": 0.7,
+      "max_tokens": 1000
+    },
+    "dashscope": {
+      "api_key": "${DASHSCOPE_API_KEY}",
+      "base_url": "https://dashscope.aliyuncs.com/compatible-mode/v1",
+      "model": "qwen-plus",
+      "temperature": 0.7,
+      "max_tokens": 1000
+    },
+    "local": {
+      "model": "local-test-model",
+      "temperature": 0.7,
+      "max_tokens": 500,
+      "responses": [
+        "你好！这是一个测试响应。",
+        "很高兴为您服务。",
+        "这是一个流式响应的演示。",
+        "WebRTC + LLM + TTS 系统正在正常工作。",
+        "您可以轻松切换不同的LLM提供商。"
+      ]
+    }
+  }
+}
